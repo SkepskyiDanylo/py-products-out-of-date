@@ -28,6 +28,8 @@ class TestOutdatedProducts:
         ]
 
     @mock.patch("app.main.datetime")
-    def test_outdated_products(self, mocked_datetime: mock, products: list[dict]) -> None:
+    def test_outdated_products(self,
+                               mocked_datetime: mock,
+                               products: list[dict]) -> None:
         mocked_datetime.date.today.return_value = datetime.date(2024, 10, 10)
         assert outdated_products(products) == ["product1", "product2"]
